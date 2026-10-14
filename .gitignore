@@ -1,0 +1,11 @@
+# Personal data: never commit these.
+autofill_data.json
+autofill_data.json.tmp
+application_history.csv
+*.docx
+*.doc
+*.pdf
+
+# Python
+__pycache__/
+*.pyc

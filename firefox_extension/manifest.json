@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "Job App Autofill",
+  "version": "1.0.0",
+  "description": "Click the toolbar button to fill the job application on the current page, once, with data from the Job App Manager program running on this computer.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "job-app-autofill@joequarrie.local",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_title": "Job App Autofill: click to fill this page"
+  }
+}
