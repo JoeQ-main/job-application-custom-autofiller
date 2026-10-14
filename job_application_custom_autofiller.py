@@ -1,13 +1,13 @@
 """
-job_app_manager.py - Job App Manager: the program window.
+job_application_custom_autofiller.py - Job Application Custom Autofiller: the program window.
 
-Start it with "Run Job App Manager.cmd" (or: python job_app_manager.py).
+Start it with "Run Job Application Custom Autofiller.cmd" (or: python job_application_custom_autofiller.py).
 
 How it works
 ------------
 1. Fill in "My Profile" once (it was pre-filled from your resume).
 2. For each job, fill in "This Application" (company, title, ...).
-3. On each application page in Firefox, click the "Job App Autofill"
+3. On each application page in Firefox, click the "Job Application Custom Autofiller"
    toolbar button. The extension fills every box it recognizes on that
    page, once, replacing whatever the box already held. Click again on
    the next page.
@@ -36,12 +36,12 @@ from local_server import AutofillServer
 REPORT_EVENT = "<<AutofillReport>>"
 
 
-class JobAppManager:
+class JobApplicationCustomAutofiller:
     """The main window. Each build_*_tab method creates one tab."""
 
     def __init__(self, root):
         self.root = root
-        self.root.title("Job App Manager")
+        self.root.title("Job Application Custom Autofiller")
         self.root.geometry("900x680")
         self.root.report_callback_exception = self.show_unexpected_error
 
@@ -81,7 +81,7 @@ class JobAppManager:
         ttk.Button(top_bar, text="■  Finished (log this application)", command=self.finish_application).pack(side="left")
         ttk.Button(top_bar, text="Save", command=self.save_clicked).pack(side="left", padx=(20, 0))
 
-        self.status_var = tk.StringVar(value="Ready. Click the Job App Autofill button in Firefox.")
+        self.status_var = tk.StringVar(value="Ready. Click the Job Application Custom Autofiller button in Firefox.")
         self.status_label = tk.Label(top_bar, textvariable=self.status_var, fg="#555", font=("Segoe UI", 10, "bold"))
         self.status_label.pack(side="left", padx=16)
 
@@ -125,7 +125,7 @@ class JobAppManager:
         scroll.pack(side="right", fill="y")
         self.log_text.pack(side="left", fill="both", expand=True)
 
-        self.log("Ready. Open a job application in Firefox and click the Job App Autofill toolbar button. "
+        self.log("Ready. Open a job application in Firefox and click the Job Application Custom Autofiller toolbar button. "
                  "Each click fills the page you are on, once, replacing what the boxes already hold.")
 
     # -- This Application tab ----------------------------------------------
@@ -226,7 +226,7 @@ class JobAppManager:
         self.notebook.add(tab, text="Settings")
         settings = self.data["settings"]
 
-        ttk.Label(tab, text="Pages are filled only when you click the Job App Autofill button in Firefox, "
+        ttk.Label(tab, text="Pages are filled only when you click the Job Application Custom Autofiller button in Firefox, "
                   "so there is no list of allowed sites: the page you click on is the page that is filled.",
                   wraplength=840).grid(row=0, column=0, columnspan=2, sticky="w")
 
@@ -363,7 +363,7 @@ class JobAppManager:
         self.session_filled = 0
         self.session_pages = set()
         self.logged_empty_labels = set()
-        self.status_var.set("Ready. Click the Job App Autofill button in Firefox.")
+        self.status_var.set("Ready. Click the Job Application Custom Autofiller button in Firefox.")
 
     def new_application(self):
         if not messagebox.askyesno(
@@ -600,11 +600,11 @@ class JobAppManager:
 def main():
     root = tk.Tk()
     try:
-        JobAppManager(root)
+        JobApplicationCustomAutofiller(root)
     except (ValueError, OSError) as err:
         # Problems reading the data file or starting the local server.
         root.withdraw()
-        messagebox.showerror("Job App Manager could not start", str(err))
+        messagebox.showerror("Job Application Custom Autofiller could not start", str(err))
         root.destroy()
         return
     root.mainloop()

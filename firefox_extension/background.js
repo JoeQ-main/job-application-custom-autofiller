@@ -1,9 +1,9 @@
 /*
  * background.js - Runs once for the whole browser.
  *
- * Nothing happens until you click the "Job App Autofill" toolbar button.
+ * Nothing happens until you click the "Job Application Custom Autofiller" toolbar button.
  * On each click it:
- *   1. asks the Job App Manager program (running on this same computer at
+ *   1. asks the Job Application Custom Autofiller program (running on this same computer at
  *      127.0.0.1) for the current fill rules,
  *   2. hands those rules to the content script in every frame of the
  *      current tab, which fills the page ONCE,
@@ -27,7 +27,7 @@ let clickFilled = 0;
 function showBadge(text, color, title) {
   browser.browserAction.setBadgeText({ text: text });
   browser.browserAction.setBadgeBackgroundColor({ color: color });
-  browser.browserAction.setTitle({ title: "Job App Autofill: " + title });
+  browser.browserAction.setTitle({ title: "Job Application Custom Autofiller: " + title });
 }
 
 async function getRules() {
@@ -48,7 +48,7 @@ async function fillCurrentPage(tab) {
     rules = await getRules();
   } catch (err) {
     // Normal when the program is not open.
-    showBadge("!", "#c62828", "the Job App Manager program is not running (" + err + ")");
+    showBadge("!", "#c62828", "the Job Application Custom Autofiller program is not running (" + err + ")");
     return;
   }
 

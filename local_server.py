@@ -59,7 +59,7 @@ class AutofillServer:
         except OSError as err:
             raise OSError(
                 f"Could not start the local server on 127.0.0.1:{self.port} ({err}).\n"
-                f"Most likely Job App Manager is already open in another window.\n"
+                f"Most likely Job Application Custom Autofiller is already open in another window.\n"
                 f"Close the other copy, or change \"port\" in autofill_data.json "
                 f"(and the same number in firefox_extension/background.js)."
             ) from err

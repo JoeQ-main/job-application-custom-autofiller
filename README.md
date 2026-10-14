@@ -1,4 +1,4 @@
-# Job App Manager
+# Job Application Custom Autofiller
 
 A small Windows program plus a Firefox extension that fill in job applications on
 Indeed, LinkedIn and employer sites from your saved information. Each click on the
@@ -9,15 +9,15 @@ timer, and it never clicks Next or Submit for you.
 
 | File | What it is |
 |---|---|
-| `Run Job App Manager.cmd` | Double-click to open the program |
-| `job_app_manager.py` | The program window |
+| `Run Job Application Custom Autofiller.cmd` | Double-click to open the program |
+| `job_application_custom_autofiller.py` | The program window |
 | `field_rules.py` | The list of fields it recognizes and the label patterns for each |
 | `data_store.py` | Saving/loading, cover letter blanks, reading .docx files |
 | `local_server.py` | Lets the Firefox extension talk to the program (your computer only, 127.0.0.1) |
 | `autofill_data.json` | **All your saved data.** It is a plain text file you can open in Notepad |
 | `application_history.csv` | Created on your first **Finished** click: one row per application |
-| `firefox_extension\` | The "Job App Autofill" Firefox extension |
-| `job_app_autofill.xpi` | The same extension packed into one file, for permanent installs |
+| `firefox_extension\` | The "Job Application Custom Autofiller" Firefox extension |
+| `job_application_custom_autofiller.xpi` | The same extension packed into one file, for permanent installs |
 
 ## One-time setup
 
@@ -32,10 +32,10 @@ timer, and it never clicks Next or Submit for you.
    * **B. Permanent, Firefox Developer Edition or ESR.** In `about:config`, set
      `xpinstall.signatures.required` to `false`. Then open `about:addons`, click
      the gear icon, choose **Install Add-on From File...**, and pick
-     `job_app_autofill.xpi`. Regular Firefox does not allow this setting.
+     `job_application_custom_autofiller.xpi`. Regular Firefox does not allow this setting.
    * **C. Permanent, regular Firefox.** Sign it privately (it is free and stays
      unlisted) at https://addons.mozilla.org/developers/ : choose **Submit a New
-     Add-on**, pick **On your own**, and upload `job_app_autofill.xpi`. Mozilla
+     Add-on**, pick **On your own**, and upload `job_application_custom_autofiller.xpi`. Mozilla
      returns a signed .xpi, usually within 24 hours, which you install with
      **Install Add-on From File...**.
 
@@ -45,12 +45,12 @@ timer, and it never clicks Next or Submit for you.
 
 ## Applying for a job
 
-1. Double-click **Run Job App Manager.cmd**.
+1. Double-click **Run Job Application Custom Autofiller.cmd**.
 2. On **This Application**, enter the company, job title and (if you know it) the
    hiring manager. The cover letter uses these. Fill in "why this company" if you
    want it filled too.
 3. Open the application in Firefox. On each page of it, click the
-   **Job App Autofill** toolbar button. The page is filled once, and the button's
+   **Job Application Custom Autofiller** toolbar button. The page is filled once, and the button's
    badge shows how many boxes were filled (a red **!** means the program is not
    running, or the page needs a reload).
 4. Click through the application pages yourself, clicking the toolbar button on
@@ -108,5 +108,5 @@ timer, and it never clicks Next or Submit for you.
 | A drop-down was not set | The list's choices must contain your answer. The Activity log lists the choices it saw, so you can match one, e.g. `PA` or `Pennsylvania` both work for states |
 
 Detailed errors from inside the extension appear in Firefox's console
-(`about:debugging` → **Inspect** next to Job App Autofill, or F12 on the page)
-with the prefix `[Job App Autofill]`.
+(`about:debugging` → **Inspect** next to Job Application Custom Autofiller, or F12 on the page)
+with the prefix `[Job Application Custom Autofiller]`.

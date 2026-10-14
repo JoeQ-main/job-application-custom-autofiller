@@ -1,9 +1,9 @@
 /*
  * content.js - Runs inside every web page (and every frame inside a page).
  *
- * It does nothing on its own. Each time you click the "Job App Autofill"
+ * It does nothing on its own. Each time you click the "Job Application Custom Autofiller"
  * toolbar button, the background script sends this page the current rules
- * from the Job App Manager program, and this script makes ONE pass:
+ * from the Job Application Custom Autofiller program, and this script makes ONE pass:
  *   1. finds the boxes, drop-downs, Yes/No buttons, check boxes, date boxes
  *      and rich-text editors on the page,
  *   2. reads each one's label ("First name", "Are you 18 or older?", ...),
@@ -217,7 +217,7 @@ function compileRules(rules) {
     try {
       result.push({ ...rule, regex: new RegExp(rule.pattern, "i") });
     } catch (err) {
-      console.warn("[Job App Autofill] Skipping rule '" + rule.name + "': bad pattern /" + rule.pattern + "/ (" + err.message + ")");
+      console.warn("[Job Application Custom Autofiller] Skipping rule '" + rule.name + "': bad pattern /" + rule.pattern + "/ (" + err.message + ")");
     }
   }
   return result;
@@ -790,7 +790,7 @@ async function onFillRequest(rules) {
     compiledRules = compileRules(rules || []);
     return { filled: await fillPageOnce() };
   } catch (err) {
-    console.warn("[Job App Autofill] Filling failed on " + location.href + ": " + err);
+    console.warn("[Job Application Custom Autofiller] Filling failed on " + location.href + ": " + err);
     return { error: String(err) };
   } finally {
     fillRunning = false;

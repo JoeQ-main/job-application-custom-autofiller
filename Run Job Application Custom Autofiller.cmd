@@ -1,7 +1,7 @@
 @echo off
 REM ==========================================================================
-REM  Run Job App Manager.cmd
-REM  Double-click this file to open Job App Manager.
+REM  Run Job Application Custom Autofiller.cmd
+REM  Double-click this file to open Job Application Custom Autofiller.
 REM  (A .cmd file is used instead of a PowerShell script, so Windows'
 REM   PowerShell "execution policy" can never block it.)
 REM
@@ -23,7 +23,7 @@ if not defined PY if exist "%ProgramData%\anaconda3\python.exe" set PY="%Program
 
 if not defined PY (
     echo.
-    echo ERROR in "Run Job App Manager.cmd": no usable Python was found.
+    echo ERROR in "Run Job Application Custom Autofiller.cmd": no usable Python was found.
     echo   Tried: "py -3", "python", and the Anaconda/Miniconda folders in
     echo   %USERPROFILE%, %LOCALAPPDATA% and %ProgramData%.
     echo   Fix: install Python from https://www.python.org/downloads/windows/
@@ -33,11 +33,11 @@ if not defined PY (
     exit /b 1
 )
 
-echo Starting Job App Manager with %PY% ...
-%PY% job_app_manager.py
+echo Starting Job Application Custom Autofiller with %PY% ...
+%PY% job_application_custom_autofiller.py
 if errorlevel 1 (
     echo.
-    echo ERROR: Job App Manager stopped with an error. The details are printed above.
+    echo ERROR: Job Application Custom Autofiller stopped with an error. The details are printed above.
     echo   Python used: %PY%
     echo   Folder:      %~dp0
     echo.
